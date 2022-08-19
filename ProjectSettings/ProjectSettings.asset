@@ -768,7 +768,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Standalone: 
+    Standalone: HYBRID_ENTITIES_CAMERA_CONVERSION
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

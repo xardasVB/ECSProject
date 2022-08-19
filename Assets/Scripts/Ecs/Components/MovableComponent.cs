@@ -1,8 +1,10 @@
+using System;
+using Unity.Entities;
 using UnityEngine;
 
 namespace Assets.Scripts.Ecs.Components {
-    internal struct MovableComponent {
-        public CharacterController CharacterController;
-        public float Speed;
+    [GenerateAuthoringComponent]
+    public struct MovableComponent : IComponentData {
+        public float speed;
     }
 }

@@ -1,17 +1,22 @@
 using Assets.Scripts.Ecs.Components;
-using Assets.Scripts.Ecs.Tags;
-using Leopotam.Ecs;
+using Unity.Entities;
+using UnityEngine;
 
 namespace Assets.Scripts.Ecs.Systems {
-    sealed class PlayerInputSystem : IEcsRunSystem {
+    public partial class PlayerInputSystem : SystemBase {
         
-        private readonly EcsFilter<PlayerTag, DirectionComponent> _directionFilter = null;
+        private Vector2 _moveVector;
 
-        public void Run() {
-            foreach (var i in _directionFilter) {
-                ref PlayerTag playerTag = ref _directionFilter.Get1(i);
-                ref DirectionComponent directionComponent = ref _directionFilter.Get2(i);
-            }
+        protected override void OnUpdate() {
+            var moveVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            
+            Entities.ForEach((ref DirectionComponent directionComponent, in PlayerTag playerTag) => {
+                ref var direction = ref directionComponent.direction;
+                
+                direction.x = moveVector.x;
+                direction.z = moveVector.y;
+                
+            }).Schedule();
         }
     }
 }
