@@ -6,7 +6,6 @@ namespace Assets.Scripts.Ecs.Systems {
     sealed partial class MovementSystem : SystemBase {
 
         protected override void OnUpdate() {
-            /*, ref MovableComponent movableComponent, ref DirectionComponent directionComponent*/
             var deltaTime = Time.DeltaTime;
             
             Entities
